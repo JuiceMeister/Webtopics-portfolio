@@ -211,11 +211,24 @@ main .afterGradient {
 }
 
 main .introSection {
-  height: 30vh;
+  height: 60vh;
   font-family: var(--nunito);
   color: var(--black);
   text-align: center;
-  margin-top: 900px;
+  margin-top: 700px;
+}
+
+@media (min-width: 390px) {
+  main .introSection {
+    height: 40vh;
+    margin-top: 900px;
+  }
+}
+
+@media (min-width: 700px) {
+  main .introSection {
+    height: 30vh;
+  }
 }
 
 @media (min-width: 850px) {
@@ -293,6 +306,7 @@ main .introSection .typedLine1 span {
 
 main .introSection p {
   width: 65%;
+  height: 250px;
   margin: 0 auto;
   padding: .5rem 1rem;
   font-family: Comfortaa, cursive;
@@ -311,6 +325,7 @@ main .navigateProjects svg {
   width: 80px;
   height: 80px;
   cursor: pointer;
+  color: var(--black);
   animation: 1s ease-in-out infinite upAndDown;
 }
 

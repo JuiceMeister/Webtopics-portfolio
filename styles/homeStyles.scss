@@ -242,11 +242,20 @@ main{
 }
 
 .introSection{
-    margin-top: 900px;
-    height: 30vh;
+    margin-top: 700px;
+    height: 60vh;
     font-family: var(--nunito);
     color: var(--black);
     text-align: center;
+
+    @media(min-width: 390px){
+        margin-top: 900px;
+        height: 40vh;
+    }
+
+    @media (min-width:700px) {
+        height: 30vh;
+    }
 
     @media  (min-width: 850px){
         height: 40vh;
@@ -328,6 +337,7 @@ main{
         font-family: 'Comfortaa', cursive;
         width: 65%;
         margin: 0 auto;
+        height: 250px;
     }
 
 }
@@ -343,6 +353,7 @@ main{
         height: 80px;
         animation: upAndDown 1s ease-in-out infinite;
         cursor: pointer;
+        color: var(--black);
 
         @keyframes upAndDown{
             0%{

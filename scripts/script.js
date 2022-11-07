@@ -121,6 +121,8 @@ function loadComplete() {
         scroll.scrollTo(projects, {
           offset: -80,
         });
+
+        console.log("click")
       })
 
       
