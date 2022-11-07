@@ -26,6 +26,9 @@ function loadComplete() {
     const header = document.getElementById("heading");
     const title = document.getElementById("title")
     const hand = document.getElementById("wavingHand")
+    const navigateProjects = document.getElementsByClassName("navigateProjects")
+    const projects = document.getElementById("projectCards")
+    const projectsLink = document.getElementById("projectsLink")
 
     const darkModeCheck = document.getElementById("check");
     const darkModeCheckBox = document.querySelector("#darkModeCheckBox");
@@ -76,6 +79,8 @@ function loadComplete() {
           menu.children[i].children[0].classList.toggle("scrolled4", window.pageYOffset >= 200)
         }
 
+        menu.children[2].classList.toggle("scrolled4", window.pageYOffset >= 200)
+
         for(let i = 0;i < document.getElementsByClassName("icon").length;i++){
           document.getElementsByClassName("icon")[i].classList.toggle("scrolled2", window.pageYOffset >= 200);
         }
@@ -105,6 +110,18 @@ function loadComplete() {
           
         }
       });
+
+      navigateProjects[0].addEventListener("click", () => {
+        scroll.scrollTo(projects, {
+          offset: -80,
+        });
+      })
+
+      projectsLink.addEventListener("click", () => {
+        scroll.scrollTo(projects, {
+          offset: -80,
+        });
+      })
 
       
 })()

@@ -573,6 +573,9 @@ function loadComplete() {
     const header = document.getElementById("heading");
     const title = document.getElementById("title");
     const hand = document.getElementById("wavingHand");
+    const navigateProjects = document.getElementsByClassName("navigateProjects");
+    const projects = document.getElementById("projectCards");
+    const projectsLink = document.getElementById("projectsLink");
     const darkModeCheck = document.getElementById("check");
     const darkModeCheckBox = document.querySelector("#darkModeCheckBox");
     let expanded = document.getElementById("menu").getAttribute("aria-expanded");
@@ -605,6 +608,7 @@ function loadComplete() {
         hand.classList.toggle("wave", window.pageYOffset >= 200);
         for(let i = 0; i < 3; i++)button.children[i].classList.toggle("scrolled3", window.pageYOffset >= 200);
         for(let i1 = 0; i1 < 5; i1++)menu.children[i1].children[0].classList.toggle("scrolled4", window.pageYOffset >= 200);
+        menu.children[2].classList.toggle("scrolled4", window.pageYOffset >= 200);
         for(let i2 = 0; i2 < document.getElementsByClassName("icon").length; i2++)document.getElementsByClassName("icon")[i2].classList.toggle("scrolled2", window.pageYOffset >= 200);
     });
     let mode = false;
@@ -622,6 +626,16 @@ function loadComplete() {
             document.documentElement.style.setProperty("--gray", "#3a3a3a");
             mode = false;
         }
+    });
+    navigateProjects[0].addEventListener("click", ()=>{
+        scroll.scrollTo(projects, {
+            offset: -80
+        });
+    });
+    projectsLink.addEventListener("click", ()=>{
+        scroll.scrollTo(projects, {
+            offset: -80
+        });
     });
 })();
 

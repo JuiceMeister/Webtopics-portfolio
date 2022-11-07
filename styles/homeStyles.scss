@@ -71,6 +71,19 @@ header{
 
             list-style: none;
             font-size: 32px;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 600;
+            color: #ffffff;
+            transition: color 0.1s linear;
+            cursor: pointer;
+
+            @media (min-width: 850px){
+
+            
+            &:hover{
+                color: var(--pink);
+            }
+        }
 
             a{
                 font-family: 'Nunito', sans-serif;
@@ -317,6 +330,34 @@ main{
         margin: 0 auto;
     }
 
+}
+
+.navigateProjects{
+    width: 100%;
+    display: grid;
+    place-content: center;
+    margin: 4rem 0;
+
+    svg{
+        width: 80px;
+        height: 80px;
+        animation: upAndDown 1s ease-in-out infinite;
+        cursor: pointer;
+
+        @keyframes upAndDown{
+            0%{
+                transform: translateY(0px);
+            }
+
+            20%{
+                transform: translateY(20px);
+            }
+
+            100%{
+                transform: translateY(0px);
+            }
+        }
+    }
 }
 
 .projectCards{

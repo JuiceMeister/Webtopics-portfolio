@@ -613,7 +613,7 @@ var typewriterP4 = new Typewriter_1["default"](document.querySelector(".resP4"),
     deletingSpeed: 40
 });
 typewriterTitle.typeString("Resume").start();
-typewriterIntro.typeString("Interact with the buttons... ").start();
+typewriterIntro.typeString("Interact with the buttons...").start();
 var interact;
 setTimeout(function() {
     interact = setInterval(function() {
@@ -663,6 +663,14 @@ skills.addEventListener("click", function() {
     typewriterIntro.deleteAll().start();
     clearInterval(interact);
     typewriterTitle.deleteAll().pauseFor(200).typeString("Skills").start();
+    typewriterSpan1.pauseFor(200).typeString("Three.js:");
+    typewriterP1.typeString("\uD83E\uDD76 \uD83E\uDD76 \uD83E\uDD76");
+    typewriterSpan2.pauseFor(400).typeString("CSS").deleteChars(3).typeString("SCSS:");
+    typewriterP2.typeString("\uD83D\uDD25 \uD83D\uDD25 \uD83D\uDD25 \uD83D\uDD25 \uD83D\uDD25");
+    typewriterSpan3.pauseFor(600).typeString("TypeScript:");
+    typewriterP3.typeString("\uD83E\uDD76 \uD83E\uDD76 \uD83E\uDD76 \uD83E\uDD76");
+    typewriterSpan4.pauseFor(800).typeString("Storybook:");
+    typewriterP4.typeString("\uD83D\uDD25 \uD83D\uDD25 \uD83D\uDD25");
 });
 //EXPERIENCE
 exp.addEventListener("click", function() {

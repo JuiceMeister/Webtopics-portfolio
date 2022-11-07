@@ -102,7 +102,7 @@ typewriterTitle
     .start()
 
 typewriterIntro
-    .typeString("Interact with the buttons... ")
+    .typeString("Interact with the buttons...")
     .start()
 
 let interact 
@@ -245,6 +245,36 @@ skills.addEventListener("click", () => {
     .pauseFor(200)
     .typeString("Skills")
     .start()
+
+  typewriterSpan1
+    .pauseFor(200)
+    .typeString("Three.js:")
+
+  typewriterP1
+    .typeString("🥶 🥶 🥶")  
+
+  typewriterSpan2
+    .pauseFor(400)
+    .typeString("CSS")
+    .deleteChars(3)
+    .typeString("SCSS:")
+
+  typewriterP2
+    .typeString("🔥 🔥 🔥 🔥 🔥")  
+
+  typewriterSpan3
+    .pauseFor(600)
+    .typeString("TypeScript:")
+
+  typewriterP3
+    .typeString("🥶 🥶 🥶 🥶")  
+
+  typewriterSpan4
+    .pauseFor(800)
+    .typeString("Storybook:")
+
+  typewriterP4
+    .typeString("🔥 🔥 🔥")  
 })
 
 //EXPERIENCE
