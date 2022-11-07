@@ -1,0 +1,75 @@
+#darkModeButton{
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    color: black;
+    font-family: black;
+}
+
+label{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 20%;
+}
+
+.darkModeThema{
+    margin-right: 0.5rem;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+
+input[type="checkbox"]{
+    display: none;
+    visibility: hidden;
+}
+
+.check{
+    position: relative;
+    display: block;
+    width: 40px;
+    height: 20px;
+    background-color: rgb(233, 176, 233);
+    cursor: pointer;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: ease-in 0.5s;
+}
+
+input[type="checkbox"]:checked ~ .check{
+    background-color: rgb(233, 176, 233);
+}
+
+.check::before{
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    background-color: #ffffff;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    transition: all 0.5s;
+}
+
+input[type="checkbox"]:checked ~ .check::before{
+    transform: translateX(-50px);
+}
+
+.check::after{
+    content: '';
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background-color: #272727;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    transition: all 0.5s;
+    transform: translateX(50px);
+}
+
+input[type="checkbox"]:checked ~ .check::after{
+    transform: translateX(0px);
+}

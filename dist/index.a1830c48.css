@@ -1,0 +1,15 @@
+html, body {
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+div {
+  height: 100%;
+  width: 100%;
+  background-color: #01001e;
+  margin: 0;
+  overflow: hidden;
+}
+
+/*# sourceMappingURL=index.a1830c48.css.map */
