@@ -287,7 +287,6 @@ main #resume .resumeInfo ul li {
   margin: 1rem auto;
   padding: 0 1rem;
   list-style: none;
-  transition: all .3s ease-in;
   display: flex;
   transform: translateX(-200px);
 }

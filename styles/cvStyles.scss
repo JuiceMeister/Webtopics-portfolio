@@ -305,8 +305,6 @@ main{
                     padding: 0 1rem;
                     transform: translateX(-200px);
                     opacity: 0;
-                    transition-property: transform, opacity;
-                    transition: 0.3s ease-in;
                  
 
                     @media (min-width:700px){
