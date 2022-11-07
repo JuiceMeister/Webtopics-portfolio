@@ -34,6 +34,57 @@ function loadComplete() {
     const darkModeCheckBox = document.querySelector("#darkModeCheckBox");
     let expanded = document.getElementById("menu").getAttribute("aria-expanded");
 
+    function setCookie(cname, cvalue) {
+      document.cookie = cname + "=" + cvalue + ";path=/";
+    }
+
+    function setCookieCV(cname, cvalue) {
+      document.cookie = cname + "=" + cvalue + ";path=/CV";
+    }
+  
+    function getCookie(cname) {
+      let name = cname + "=";
+      let ca = document.cookie.split(";");
+      for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == " ") {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+  
+    function checkCookie() {
+      let mode = getCookie("darkMode");
+      if (mode === "") {
+        document.documentElement.style.setProperty("--white", "#ffffff");
+        document.documentElement.style.setProperty("--black", "#272727");
+        document.documentElement.style.setProperty("--gray", "#3a3a3a");
+  
+        darkModeCheckBox.checked = false;
+  
+        setCookie("darkMode", "false");
+        setCookieCV("darkMode", "false");
+      } else if (mode === "false") {
+        document.documentElement.style.setProperty("--white", "#ffffff");
+        document.documentElement.style.setProperty("--black", "#272727");
+        document.documentElement.style.setProperty("--gray", "#3a3a3a");
+  
+        darkModeCheckBox.checked = false;
+      } else if (mode === "true") {
+        document.documentElement.style.setProperty("--white", "#272727");
+        document.documentElement.style.setProperty("--black", "#ffffff");
+        document.documentElement.style.setProperty("--gray", "#ffffff");
+  
+        darkModeCheckBox.checked = true;
+      }
+    }
+  
+    window.addEventListener("onload", checkCookie());
+
     let open = false;
     let timeOut1;
     let timeOut2;
@@ -88,7 +139,7 @@ function loadComplete() {
         
       })
 
-      let mode = false
+      // let mode = getCookie("darkMode");
 
       darkModeCheck.addEventListener("click", () => {
         document.getElementsByTagName("body")[0].style.transition =
@@ -96,19 +147,22 @@ function loadComplete() {
         document.getElementsByTagName("header")[0].style.transition =
           "all ease-in 0.2s";
     
-        if (!mode) {
-          document.documentElement.style.setProperty("--white", "#272727");
-          document.documentElement.style.setProperty("--black", "#ffffff");
-          document.documentElement.style.setProperty("--gray", "#ffffff");
-          mode = true
-        } else {
-          document.documentElement.style.setProperty("--white", "#ffffff");
-          document.documentElement.style.setProperty("--black", "#272727");
-          document.documentElement.style.setProperty("--gray", "#3a3a3a");
-          
-          mode = false
-          
-        }
+          let mode = getCookie("darkMode");
+          if (mode === "false") {
+            document.documentElement.style.setProperty("--white", "#272727");
+            document.documentElement.style.setProperty("--black", "#ffffff");
+            document.documentElement.style.setProperty("--gray", "#ffffff");
+            setCookie("darkMode", "true");
+            setCookieCV("darkMode", "true");
+          } else {
+            document.documentElement.style.setProperty("--white", "#ffffff");
+            document.documentElement.style.setProperty("--black", "#272727");
+            document.documentElement.style.setProperty("--gray", "#3a3a3a");
+      
+            setCookie("darkMode", "false");
+            setCookieCV("darkMode", "false");
+          }
+
       });
 
       navigateProjects[0].addEventListener("click", () => {
@@ -122,7 +176,6 @@ function loadComplete() {
           offset: -80,
         });
 
-        console.log("click")
       })
 
       

@@ -17,6 +17,57 @@
   let timeOut1;
   let timeOut2;
 
+  function setCookie(cname, cvalue) {
+    document.cookie = cname + "=" + cvalue + ";path=/CV";
+  }
+
+  function setCookieHome(cname, cvalue) {
+    document.cookie = cname + "=" + cvalue + ";path=/";
+  }
+
+  function getCookie(cname) {
+    let name = cname + "=";
+    let ca = document.cookie.split(";");
+    
+      let c = ca[0];
+      while (c.charAt(0) == " ") {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    
+    return "";
+  }
+
+  function checkCookie() {
+    let mode = getCookie("darkMode");
+    if (mode === "") {
+      document.documentElement.style.setProperty("--white", "#ffffff");
+      document.documentElement.style.setProperty("--black", "#272727");
+      document.documentElement.style.setProperty("--gray", "#3a3a3a");
+
+      darkModeCheckBox.checked = false;
+
+      setCookie("darkMode", "false");
+      setCookieHome("darkMode", "false");
+    } else if (mode === "false") {
+      document.documentElement.style.setProperty("--white", "#ffffff");
+      document.documentElement.style.setProperty("--black", "#272727");
+      document.documentElement.style.setProperty("--gray", "#3a3a3a");
+
+      darkModeCheckBox.checked = false;
+    } else if (mode === "true") {
+      document.documentElement.style.setProperty("--white", "#272727");
+      document.documentElement.style.setProperty("--black", "#ffffff");
+      document.documentElement.style.setProperty("--gray", "#ffffff");
+
+      darkModeCheckBox.checked = true;
+    }
+  }
+
+  window.addEventListener("onload", checkCookie());
+
   button.addEventListener("click", () => {
     clearTimeout(timeOut1);
 
@@ -43,26 +94,29 @@
     });
   });
 
-  let mode = false;
+  // let mode = false;
 
   darkModeCheck.addEventListener("click", () => {
     document.getElementsByTagName("body")[0].style.transition =
       "all ease-in 0s";
     document.getElementsByTagName("header")[0].style.transition =
-      "all ease-in 0.2s";
+      "all ease-in 0s";
 
-    if (!mode) {
-      document.documentElement.style.setProperty("--white", "#272727");
-      document.documentElement.style.setProperty("--black", "#ffffff");
-      document.documentElement.style.setProperty("--gray", "#ffffff");
-      mode = true;
-    } else {
-      document.documentElement.style.setProperty("--white", "#ffffff");
-      document.documentElement.style.setProperty("--black", "#272727");
-      document.documentElement.style.setProperty("--gray", "#3a3a3a");
-
-      mode = false;
-    }
+      let mode = getCookie("darkMode");
+      if (mode === "false") {
+        document.documentElement.style.setProperty("--white", "#272727");
+        document.documentElement.style.setProperty("--black", "#ffffff");
+        document.documentElement.style.setProperty("--gray", "#ffffff");
+        setCookie("darkMode", "true");
+        setCookieHome("darkMode", "true");
+      } else {
+        document.documentElement.style.setProperty("--white", "#ffffff");
+        document.documentElement.style.setProperty("--black", "#272727");
+        document.documentElement.style.setProperty("--gray", "#3a3a3a");
+  
+        setCookie("darkMode", "false");
+        setCookieHome("darkMode", "false");
+      }
   });
 
   window.addEventListener("load", () => {
