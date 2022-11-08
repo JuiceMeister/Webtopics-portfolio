@@ -186,9 +186,9 @@ education.addEventListener("click", () => {
     .typeString("2006-2012:")
 
   typewriterP1
-    .typeString("De Muse lagere")  
+    .typeString("De Muse elementary")  
     .deleteChars(4)
-    .typeString("gere school Ghent")
+    .typeString("tary school Ghent")
     .deleteChars(4)
     .typeString("ent")
 
@@ -208,7 +208,7 @@ education.addEventListener("click", () => {
   typewriterP3
     .typeString("KU Leuven Gent")  
     .typeString("\n")
-    .typeString("- Architectuur")
+    .typeString("- Architecture")
 
   typewriterSpan4
     .typeString("2021-2024:")
@@ -288,7 +288,7 @@ exp.addEventListener("click", () => {
     for(let i = 0;i < options.length; i++){
       options[i].style.pointerEvents = "auto"
     }
-  }, 5000)
+  }, 6000)
   typewriterTitle
     .deleteAll()
     .start()
@@ -302,6 +302,34 @@ exp.addEventListener("click", () => {
     .pauseFor(200)
     .typeString("Experience")
     .start()
+
+  typewriterSpan1
+    .pauseFor(200)
+    .typeString("Barman:")
+
+  typewriterP1
+    .typeString("Baracita")  
+
+  typewriterSpan2
+    .pauseFor(400)
+    .typeString("Barman:")
+
+  typewriterP2
+    .typeString("Bowl Inn Sint-Martens-Latem")  
+
+  typewriterSpan3
+    .pauseFor(600)
+    .typeString("Medewerker:")
+
+  typewriterP3
+    .typeString("Ramen & Peol")  
+
+  typewriterSpan4
+    .pauseFor(800)
+    .typeString("Verkoopmedewerker:")
+
+  typewriterP4
+    .typeString("Bakkerij Aernoudt Sint Denijs") 
 })
 
 //AWARDS
@@ -330,6 +358,35 @@ awards.addEventListener("click", () => {
     .pauseFor(200)
     .typeString("Awards")
     .start()
+
+  typewriterSpan1
+    .pauseFor(200)
+    .typeString("Hackaton Gent:")
+
+  typewriterP1
+    .typeString("7th place 💯")  
+
+  typewriterSpan2
+    .pauseFor(400)
+    .typeString("Academy Award:(not really)")
+    .deleteChars(11)
+
+  typewriterP2
+    .typeString("1996 best actor")  
+
+  typewriterSpan3
+    .pauseFor(600)
+    .typeString("Best Son award:")
+
+  typewriterP3
+    .typeString("My mother gave it to me...")  
+
+  typewriterSpan4
+    .pauseFor(800)
+    .typeString("Digitaal VLaanderen")
+
+  typewriterP4
+    .typeString("1st place") 
 
 })
 

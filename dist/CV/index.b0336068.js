@@ -644,11 +644,11 @@ education.addEventListener("click", function() {
     clearInterval(interact);
     typewriterTitle.deleteAll().pauseFor(200).typeString("Education").start();
     typewriterSpan1.typeString("2006-2012:");
-    typewriterP1.typeString("De Muse lagere").deleteChars(4).typeString("gere school Ghent").deleteChars(4).typeString("ent");
+    typewriterP1.typeString("De Muse elementary").deleteChars(4).typeString("tary school Ghent").deleteChars(4).typeString("ent");
     typewriterSpan2.typeString("2006").deleteChars(2).typeString("12-2019:");
     typewriterP2.typeString("Koninklijk Atheneum Voskenslaan Gent").typeString("\n\n").typeString("- Economie Wetenschappen");
     typewriterSpan3.typeString("2019-2021:");
-    typewriterP3.typeString("KU Leuven Gent").typeString("\n").typeString("- Architectuur");
+    typewriterP3.typeString("KU Leuven Gent").typeString("\n").typeString("- Architecture");
     typewriterSpan4.typeString("2021-2024:");
     typewriterP4.typeString("Odissee Gent").typeString("\n").typeString("- Web Design");
 });
@@ -678,11 +678,19 @@ exp.addEventListener("click", function() {
     for(var i = 0; i < options.length; i++)options[i].style.pointerEvents = "none";
     timeout = setTimeout(function() {
         for(var i = 0; i < options.length; i++)options[i].style.pointerEvents = "auto";
-    }, 5000);
+    }, 6000);
     typewriterTitle.deleteAll().start();
     typewriterIntro.deleteAll().start();
     clearInterval(interact);
     typewriterTitle.deleteAll().pauseFor(200).typeString("Experience").start();
+    typewriterSpan1.pauseFor(200).typeString("Barman:");
+    typewriterP1.typeString("Baracita");
+    typewriterSpan2.pauseFor(400).typeString("Barman:");
+    typewriterP2.typeString("Bowl Inn Sint-Martens-Latem");
+    typewriterSpan3.pauseFor(600).typeString("Medewerker:");
+    typewriterP3.typeString("Ramen & Peol");
+    typewriterSpan4.pauseFor(800).typeString("Verkoopmedewerker:");
+    typewriterP4.typeString("Bakkerij Aernoudt Sint Denijs");
 });
 //AWARDS
 awards.addEventListener("click", function() {
@@ -696,6 +704,14 @@ awards.addEventListener("click", function() {
     typewriterIntro.deleteAll().start();
     clearInterval(interact);
     typewriterTitle.deleteAll().pauseFor(200).typeString("Awards").start();
+    typewriterSpan1.pauseFor(200).typeString("Hackaton Gent:");
+    typewriterP1.typeString("7th place \uD83D\uDCAF");
+    typewriterSpan2.pauseFor(400).typeString("Academy Award:(not really)").deleteChars(11);
+    typewriterP2.typeString("1996 best actor");
+    typewriterSpan3.pauseFor(600).typeString("Best Son award:");
+    typewriterP3.typeString("My mother gave it to me...");
+    typewriterSpan4.pauseFor(800).typeString("Digitaal VLaanderen");
+    typewriterP4.typeString("1st place");
 });
 
 },{"./Typewriter":"eQV2H"}],"eQV2H":[function(require,module,exports) {

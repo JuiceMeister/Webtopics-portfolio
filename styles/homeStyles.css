@@ -210,7 +210,7 @@ main .afterGradient {
 }
 main .introSection {
   margin-top: 700px;
-  height: 60vh;
+  height: 70vh;
   font-family: var(--nunito);
   color: var(--black);
   text-align: center;
@@ -218,17 +218,17 @@ main .introSection {
 @media (min-width: 390px) {
   main .introSection {
     margin-top: 900px;
-    height: 40vh;
+    height: 50vh;
   }
 }
 @media (min-width: 700px) {
   main .introSection {
-    height: 30vh;
+    height: 40vh;
   }
 }
 @media (min-width: 850px) {
   main .introSection {
-    height: 40vh;
+    height: 50vh;
   }
 }
 main .introSection h2 {
@@ -323,7 +323,7 @@ main .navigateProjects {
   width: 100%;
   display: grid;
   place-content: center;
-  margin: 4rem 0;
+  margin: 7rem 0;
 }
 main .navigateProjects svg {
   width: 80px;
@@ -413,6 +413,12 @@ main .projectCards .projectCard p {
   font-weight: 400;
   font-size: 20px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+main .projectCards .projectCard p span {
+  font-size: 10px;
+  margin-bottom: 0.5rem;
 }
 main .projectCards .projectCard .linkBox {
   display: flex;
@@ -444,6 +450,45 @@ main .projectCards .projectCard .linkBox a:hover svg {
   transition: color 0.2s ease-in;
   color: var(--pink);
 }
+main #madeWith {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 7rem;
+}
+main #madeWith p {
+  font-size: 25px;
+  font-family: var(--nunito);
+  color: var(--black);
+  text-align: center;
+  font-weight: 600;
+}
+main #madeWith p span {
+  color: var(--pink);
+}
+main #madeWith ul {
+  width: 60%;
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+main #madeWith ul li {
+  list-style: none;
+  margin: 0 1rem;
+}
+main #madeWith ul li img {
+  width: 40px;
+  height: 40px;
+}
+main #madeWith .serious {
+  margin-top: 2rem;
+  font-family: var(--nunito);
+  font-weight: 300;
+}
 
 footer {
   height: 5rem;
@@ -451,7 +496,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 5rem;
+  margin-top: 2rem;
 }
 footer .footerContainer {
   width: 95%;

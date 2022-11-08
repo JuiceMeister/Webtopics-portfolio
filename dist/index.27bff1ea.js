@@ -593,7 +593,7 @@ window.addEventListener("scroll", function() {
         if (!introTyped) {
             typewriterWelcome.typeString("Welcome").pauseFor(500).typeString(" to my port").deleteChars(4).start();
             typewriterPF.pauseFor(500).typeString("Portfolio").start();
-            typewriterIntro.pauseFor(1000).typeString("Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui odio quaerat nesciunt ut repellat, eius dolores at labore earum dolorum unde modi eos excepturi provident laudantium, delectus hic asperiores deleniti?").start();
+            typewriterIntro.pauseFor(1000).typeString("My name is Cesar Vanneste and this is a short portfolio making use of various Web topics, such as: Three.js, Storybook, Typescript, SCSS, A11y and some random js libraries. Below you can find some projects I made. Or you can navigate to the CV page to check out an automated typing resume.").start();
             introTyped = true;
         }
     }

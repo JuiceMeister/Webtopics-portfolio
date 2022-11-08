@@ -243,22 +243,22 @@ main{
 
 .introSection{
     margin-top: 700px;
-    height: 60vh;
+    height: 70vh;
     font-family: var(--nunito);
     color: var(--black);
     text-align: center;
 
     @media(min-width: 390px){
         margin-top: 900px;
-        height: 40vh;
+        height: 50vh;
     }
 
     @media (min-width:700px) {
-        height: 30vh;
+        height: 40vh;
     }
 
     @media  (min-width: 850px){
-        height: 40vh;
+        height: 50vh;
     }
 
     h2{
@@ -346,7 +346,7 @@ main{
     width: 100%;
     display: grid;
     place-content: center;
-    margin: 4rem 0;
+    margin: 7rem 0;
 
     svg{
         width: 80px;
@@ -430,6 +430,13 @@ main{
             font-weight: 400;
             font-size: 20px;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+
+            span{
+                font-size: 10px;
+                margin-bottom: 0.5rem;
+            }
         }
 
         .linkBox{
@@ -473,6 +480,50 @@ main{
     }
 }
 
+#madeWith{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 7rem;
+    p{
+        font-size: 25px;
+        font-family: var(--nunito);
+        color: var(--black);
+        text-align: center;
+        font-weight: 600;
+
+        span{
+            color: var(--pink);
+        }
+    }
+
+    ul{
+        width: 60%;
+        margin: 1rem auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        li{
+            list-style: none;
+            margin: 0 1rem;
+            img{
+                width: 40px;
+                height: 40px;
+            }
+        }
+    }
+
+    .serious{
+        margin-top: 2rem;
+        font-family: var(--nunito);
+        font-weight: 300;
+    }
+}
+
 }
 
 
@@ -484,7 +535,7 @@ footer{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 5rem;
+    margin-top: 2rem;
 
     .footerContainer{
         width: 95%;

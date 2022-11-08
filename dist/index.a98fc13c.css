@@ -211,7 +211,7 @@ main .afterGradient {
 }
 
 main .introSection {
-  height: 60vh;
+  height: 70vh;
   font-family: var(--nunito);
   color: var(--black);
   text-align: center;
@@ -220,20 +220,20 @@ main .introSection {
 
 @media (min-width: 390px) {
   main .introSection {
-    height: 40vh;
+    height: 50vh;
     margin-top: 900px;
   }
 }
 
 @media (min-width: 700px) {
   main .introSection {
-    height: 30vh;
+    height: 40vh;
   }
 }
 
 @media (min-width: 850px) {
   main .introSection {
-    height: 40vh;
+    height: 50vh;
   }
 }
 
@@ -317,7 +317,7 @@ main .introSection p {
 main .navigateProjects {
   width: 100%;
   place-content: center;
-  margin: 4rem 0;
+  margin: 7rem 0;
   display: grid;
 }
 
@@ -405,9 +405,16 @@ main .projectCards .projectCard p {
   width: 60%;
   font-family: var(--comfortaa);
   text-align: center;
+  flex-direction: column;
   margin: .5rem auto 1.5rem;
   font-size: 20px;
   font-weight: 400;
+  display: flex;
+}
+
+main .projectCards .projectCard p span {
+  margin-bottom: .5rem;
+  font-size: 10px;
 }
 
 main .projectCards .projectCard .linkBox {
@@ -445,12 +452,58 @@ main .projectCards .projectCard .linkBox a:hover svg {
   transition: color .2s ease-in;
 }
 
+main #madeWith {
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 7rem;
+  display: flex;
+}
+
+main #madeWith p {
+  font-size: 25px;
+  font-family: var(--nunito);
+  color: var(--black);
+  text-align: center;
+  font-weight: 600;
+}
+
+main #madeWith p span {
+  color: var(--pink);
+}
+
+main #madeWith ul {
+  width: 60%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem auto;
+  display: flex;
+}
+
+main #madeWith ul li {
+  margin: 0 1rem;
+  list-style: none;
+}
+
+main #madeWith ul li img {
+  width: 40px;
+  height: 40px;
+}
+
+main #madeWith .serious {
+  font-family: var(--nunito);
+  margin-top: 2rem;
+  font-weight: 300;
+}
+
 footer {
   height: 5rem;
   width: 100%;
   justify-content: center;
   align-items: center;
-  margin-top: 5rem;
+  margin-top: 2rem;
   display: flex;
 }
 
