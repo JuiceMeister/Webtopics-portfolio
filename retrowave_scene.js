@@ -2,60 +2,50 @@
 
 import * as THREE from "./node_modules/three/build/three.module.js";
 
-import Stats from "./node_modules/three/examples/jsm/libs/stats.module.js"; // To get FPS counter
+import Stats from "./node_modules/three/examples/jsm/libs/stats.module.js"; 
 
-import { BufferGeometryUtils } from "./node_modules/three/examples/jsm/utils/BufferGeometryUtils.js"; // To be able to buffer geometries
-import { SVGLoader } from "./node_modules/three/examples/jsm/loaders/SVGLoader.js"; // To be able to load SVG graphics
+import { BufferGeometryUtils } from "./node_modules/three/examples/jsm/utils/BufferGeometryUtils.js";
+import { SVGLoader } from "./node_modules/three/examples/jsm/loaders/SVGLoader.js"; 
 import { SceneUtils } from "./node_modules/three/examples/jsm/utils/SceneUtils.js";
 
 // POST-PROCESSING
-import { EffectComposer } from "./node_modules/three/examples/jsm/postprocessing/EffectComposer.js"; // To merge post-processing effects
-import { RenderPass } from "./node_modules/three/examples/jsm/postprocessing/RenderPass.js"; // To render post-processing effects
-import { UnrealBloomPass } from "./node_modules/three/examples/jsm/postprocessing/UnrealBloomPass.js"; // Bloom/Glow
-import { GlitchPass } from "./node_modules/three/examples/jsm/postprocessing/GlitchPass.js"; // Glitch effect
-import { FilmPass } from "./node_modules/three/examples/jsm/postprocessing/FilmPass.js"; // CRT effect
+import { EffectComposer } from "./node_modules/three/examples/jsm/postprocessing/EffectComposer.js"; 
+import { RenderPass } from "./node_modules/three/examples/jsm/postprocessing/RenderPass.js"; 
+import { UnrealBloomPass } from "./node_modules/three/examples/jsm/postprocessing/UnrealBloomPass.js"; 
+import { GlitchPass } from "./node_modules/three/examples/jsm/postprocessing/GlitchPass.js"; 
+import { FilmPass } from "./node_modules/three/examples/jsm/postprocessing/FilmPass.js"; 
 
 export let RetrowaveScene = function (scenePath) {
-	// DEFAULT ANIMATION SPEED
-	// This can be changed anytime with setAnimationSpeed method (changing directly this.animationSpeed won't have any effect as the whole animation relies on shaders uniforms)
+
 	this.animationSpeed = 15;
 
-	// SCENE PATH
-	// As relative path doesn't work properly, the user can set the scene path to be able to load graphics
+
 	if (!scenePath) {
-		scenePath = ''; // If unspecified, scenePath is an empty string
+		scenePath = ''; 
 	}
 	this.scenePath = scenePath;
 
-	// DEFAULT TEXTURE RESOLUTION
-	// As for the skybox, for some odd reason, 2048 are heavier than 4096 in file weight, but use less ressource... 1024 textures are really hugly, use only if required
-	this.textureResolution = 2048; // Could make this dynamically editable later on
+	this.textureResolution = 2048;
 
-	// RESSOURCES
-	// You can set all SVG files you want to load in this array...
 	this.svgFiles = [
 		[`./${this.scenePath}scenery/sun.svg`, 0, 40, -500, 0.11, "sun"],
 		[`./${this.scenePath}scenery/city_far.svg`, 0, 15, -450, 0.4, "cityFar"],
 		[`./${this.scenePath}scenery/city_close.svg`, 0, 28, -300, 0.2, "cityClose"],
 	];
-	// ... and specify your skybox textures here
 	this.skybox = [
 		`./${this.scenePath}skybox/${this.textureResolution}/px.png`, // X+
 		`./${this.scenePath}skybox/${this.textureResolution}/nx.png`, // X-
 		`./${this.scenePath}skybox/${this.textureResolution}/py.png`, // Y+
-		`./${this.scenePath}skybox/${this.textureResolution}/invisible.png`, // Y- (out of camera FoV here)
-		`./${this.scenePath}skybox/${this.textureResolution}/invisible.png`, // Z+ (out of camera FoV here)
+		`./${this.scenePath}skybox/${this.textureResolution}/invisible.png`, // Y-
+		`./${this.scenePath}skybox/${this.textureResolution}/invisible.png`, // Z+ 
 		`./${this.scenePath}skybox/${this.textureResolution}/nz.png`, // Z-
 	];
 
-	// POSITION HISTORY (avoid overlaping geometries)
 	this.positionHistory = [];
 
-	// MATERIAL ARRAY (store all shaders)
 	this.materialShaders = [];
 
-	// FPS COUNTER
-	// Off by default, call addFpsCounter method to enable it
+
 	this.fpsCounterIsActive = false;
 
 	/////////////////////////////////////////////////////////////////////////////
@@ -75,7 +65,6 @@ export let RetrowaveScene = function (scenePath) {
 	this.renderer.setSize(window.innerWidth, window.innerHeight);
 	this.renderer.domElement.id = "retrowaveScene";
 
-	// This lets the user chose where he wants to include the scene. If the id "retrowaveSceneContainer" isn't found in the DOM, it includes it in the body
 	let canvas = document.getElementById("synth");
 	if (!canvas) {
 		document.body.appendChild(this.renderer.domElement);
@@ -98,9 +87,7 @@ export let RetrowaveScene = function (scenePath) {
 	this.scene.add(this.camera);
 };
 
-/////////////////////////////////////////////////////////////////////////////////
 // SCENE PREPARATION
-/////////////////////////////////////////////////////////////////////////////////
 
 /**
  * Prepare the scene. Use this method to simplify RetrowaveScene setup
@@ -135,9 +122,8 @@ RetrowaveScene.prototype.prepareScene = function (
 	}
 };
 
-/////////////////////////////////////////////////////////////////////////////////
+
 // CHANGE ANIMATION SPEED
-/////////////////////////////////////////////////////////////////////////////////
 
 /**
  * Change animation speed
@@ -151,34 +137,12 @@ RetrowaveScene.prototype.setAnimationSpeed = function (speed = 15) {
 	}
 };
 
-/////////////////////////////////////////////////////////////////////////////////
-// FPS COUNTER
-/////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Add and enable THREE FPS counter
- */
-RetrowaveScene.prototype.addFpsCounter = function () {
-	this.stats = new Stats();
-	document.body.appendChild(this.stats.dom);
-	this.fpsCounterIsActive = true;
-};
 
-/**
- * Remove and disable THREE FPS counter
- */
-RetrowaveScene.prototype.removeFpsCounter = function () {
-	document.body.removeChild(this.stats.dom);
-	this.fpsCounterIsActive = true;
-};
 
-/////////////////////////////////////////////////////////////////////////////////
 // AUTO-ADJUST ON RESIZE
-/////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Event listener to adjust scene width/height according to window size (responsive)
- */
+
 RetrowaveScene.prototype.autoAdjustOnResize = function () {
 	window.onresize = onresizefunction.bind(this);
 	function onresizefunction() {
@@ -193,19 +157,14 @@ RetrowaveScene.prototype.autoAdjustOnResize = function () {
 	}
 };
 
-/////////////////////////////////////////////////////////////////////////////////
 // POST-PROCESSING
-/////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Enable all post-processing effects
- */
 RetrowaveScene.prototype.setPostProcessing = function () {
 	// RENDER PASS
 	this.renderScene = new RenderPass(this.scene, this.camera);
 
 	// BLOOM PASS
-	this.renderer.toneMapping = THREE.ReinhardToneMapping; // Necessary for bloom pass (or it gets overexposed), other options available (but all overexposed by default)
+	this.renderer.toneMapping = THREE.ReinhardToneMapping; 
 	this.renderer.toneMappingExposure = Math.pow(1, 4.0);
 
 	this.bloomPass = new UnrealBloomPass(
@@ -213,24 +172,22 @@ RetrowaveScene.prototype.setPostProcessing = function () {
 		1.5,
 		0,
 		0.8
-	); // Settings here appear to have no effect
+	); 
 
-	this.bloomPass.strength = 1.5; // These parameters work just fine
+	this.bloomPass.strength = 1.5; 
 	this.bloomPass.threshold = 0;
 	this.bloomPass.radius = 0.8;
 
-	// GLITCH PASS
 	this.glitchPass = new GlitchPass();
 
-	// CRT EFFECT (FILM PASS)
 	this.effectFilm = new FilmPass(
-		0.2, // noise intensity
-		0.75, // scanline intensity
-		2048, // scanline count
-		false // grayscale
+		0.2, 
+		0.75, 
+		2048, 
+		false 
 	);
 
-	// COMPOSER (MERGE RENDER PASS: Render, Bloom...)
+	
 	this.composer = new EffectComposer(this.renderer);
 	this.composer.addPass(this.renderScene);
 	this.composer.addPass(this.bloomPass);
@@ -341,13 +298,8 @@ RetrowaveScene.prototype.addRoadLines = function () {
 	this.scene.add(this.roadLines);
 };
 
-/////////////////////////////////////////////////////////////////////////////////
 // SIDEWALK
-/////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Add grid sidewalk to the scene
- */
 RetrowaveScene.prototype.addSidewalk = function () {
 	let sidewalkTopLeftGeometry = new THREE.PlaneBufferGeometry(8, 300, 0, 0);
 	sidewalkTopLeftGeometry.translate(-10, 110, 0.5);
@@ -367,19 +319,18 @@ RetrowaveScene.prototype.addSidewalk = function () {
 	sidewalkSideRightGeometry.rotateX(-Math.PI * 0.5);
 	sidewalkSideRightGeometry.rotateZ(Math.PI * 0.49);
 
-	// Merge all sidewalk geometries
 	let sidewalkConception = [];
 	sidewalkConception.push(sidewalkTopLeftGeometry);
 	sidewalkConception.push(sidewalkSideLeftGeometry);
 	sidewalkConception.push(sidewalkTopRightGeometry);
-	sidewalkConception.push(sidewalkSideRightGeometry); // Push all geometries into sidewalkConception array
+	sidewalkConception.push(sidewalkSideRightGeometry); 
 
 	let sidewalkGeometry = BufferGeometryUtils.mergeBufferGeometries(
 		sidewalkConception,
 		false
-	); // Merge all geometries within sidewalkConception array
+	); 
 
-	// Sidewalk material (grid)
+
 	let sidewalkMaterial = new THREE.MeshBasicMaterial({
 		color: 0x1be9ff,
 		side: THREE.DoubleSide,
@@ -753,15 +704,10 @@ RetrowaveScene.prototype.addProceduralSky = function () {
 	}
 };
 
-/////////////////////////////////////////////////////////////////////////////////
-// SKYBOX
-/////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Skybox, the least ressource intensive solution for the sky
- *
- * Captured from the procedural sky above using CubemapToEquirectangular (https://github.com/spite/THREE.CubemapToEquirectangular) then converted into a skybox
- */
+// SKYBOX
+
+
 RetrowaveScene.prototype.addSkybox = function () {
 	let loader = new THREE.CubeTextureLoader();
 	let texture = loader.load(this.skybox);
